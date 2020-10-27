@@ -16,8 +16,8 @@
                 <h5 class="my-4 fw-600">Rating:{{details.rate}}</h5>
                 <div>
                     <button @click="goToCart" class="btn btn-primary">Go to Cart</button>
-                    <button class="btn btn-success">Add Item</button>
-                    <button class="btn btn-danger">Remove Item</button>
+                    <button @click="addToCart" class="btn btn-success">Add Item</button>
+                    <button @click="removeCart" class="btn btn-danger">Remove Item</button>
                 </div>
               </div>
            </div>
@@ -47,6 +47,13 @@ export default {
     methods: {
         goToCart() {
             this.$router.push("/cart")
+        },
+        addToCart() {
+            console.log("men")
+            this.$store.dispatch("addToCart", this.details)
+        },
+        removeCart() {
+             this.$store.dispatch("removeCart", this.details)
         }
     },
     created() {
