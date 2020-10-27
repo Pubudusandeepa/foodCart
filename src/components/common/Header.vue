@@ -2,11 +2,11 @@
   <header>
     <div class="header">
        <div class="loo">
-         <h4 class="sweet">Sweet Dish</h4>
+         <h4 @click="goTo('home')" class="sweet">Sweet Dish</h4>
          <img src="../../assets/pizza.jpg" width="45px" height="45px" style="margin-left: 10px"/>
        </div>
        <div class=" d-flex cart">
-          <i class="fa fa-shopping-cart cart-icon"></i>
+          <i  @click="goTo('cart')"  class="fa fa-shopping-cart cart-icon"></i>
 
           <span class="cart-count">{{count}}</span>
           <h5 class="login">Login</h5>
@@ -22,6 +22,11 @@ export default {
     computed: {
         count() {
             return this.$store.state.cartItemCount
+        }
+    },
+    methods: {
+        goTo(page) {
+          page ===  "home" ? this.$router.push("/") : this.$router.push("/cart")
         }
     }
 }

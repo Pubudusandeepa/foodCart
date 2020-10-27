@@ -6,7 +6,7 @@
                <h4 class="my-4 fw-600 d-blue">Top rated</h4>
                <div class="row">
                  
-                 <div v-for="item in topRated" :key="item.id" class="col-md-4 pointer">
+                 <div @click="foodDetails(item)" v-for="item in topRated" :key="item.id" class="col-md-4 pointer">
                    <img :src="item.url" width="300px" height="300px" style="border-radius: 15px" />
                     <h5 class="fw-600 black">{{item.name}}</h5>
                  </div>
@@ -15,7 +15,7 @@
               
                <h4 class="my-4 fw-600 d-blue">All category</h4>
                <div class="row">
-                   <div v-for="item in allCategories" :key="item.id" class="col-md-4 pointer">
+                   <div @click="foodDetails(item)" v-for="item in allCategories" :key="item.id" class="col-md-4 pointer">
                      <img :src="item.url" width="300px" height="300px" style="border-radius: 15px" />
                    <h5 class="fw-600 black">{{item.name}}</h5>
                  </div>
@@ -25,7 +25,7 @@
              
                <h4 class="my-4 fw-600 d-blue">Dishes Near you</h4>
                  <div class="row">
-                   <div v-for="item in dishesNearYou" :key="item.id" class="col-md-4 pointer">
+                   <div @click="foodDetails(item)" v-for="item in dishesNearYou" :key="item.id" class="col-md-4 pointer">
                      <img :src="item.url" width="300px" height="300px" style="border-radius: 15px" />
                    <h5 class="fw-600 black">{{item.name}}</h5>
                  </div>
@@ -57,8 +57,14 @@ export default {
         dishesNearYou() {
         return this.$store.state.dishesNearYou
         } 
+    },
+    methods: {
+      foodDetails(item) {
+        console.log(item)
+        this.$router.push({ name: "food-details", params: item })
+      }
     }
-
+ 
 }
 </script>
 

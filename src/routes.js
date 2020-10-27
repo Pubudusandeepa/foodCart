@@ -3,6 +3,6 @@ import FoodDetails from './components/FoodDetails'
 import Cart from './components/Cart'
 export default [
     {path: '/', component: Home},
-    {path: '/food-details', component: FoodDetails},
+    {path: 'food-details', name: 'food-details', component: FoodDetails, props: true},
     {path: '/cart', component: Cart}
 ]
